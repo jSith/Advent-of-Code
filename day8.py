@@ -45,7 +45,6 @@ def max_register(data):
     registers = info[0]
     instructions = info[1]
     register_values = {}
-    maximum = float('-Inf')
 
     for register in registers:
         register_values[register] = 0
