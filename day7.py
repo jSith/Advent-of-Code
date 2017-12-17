@@ -31,8 +31,7 @@ def parse_tower(string):
 
 def get_bottom_programs(tower):
     for below_program in tower:
-        above_programs = below_program.above_programs
-        for above_program in above_programs:
+        for above_program in below_program.above_programs:
             tower = add_below_program(tower, above_program, below_program)
     return tower
 
