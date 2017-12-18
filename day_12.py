@@ -42,7 +42,6 @@ def group_size(data):
                 continue
         if vertex not in zero_group and breadth_first_search(graph, vertex, 0):
             zero_group.append(vertex)
-
     return len(zero_group)
 
 
