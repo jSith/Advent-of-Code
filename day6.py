@@ -1,5 +1,6 @@
 import math
 
+
 def allocation(mem_bank):
     hash_bank = []
     realloc_counter = 0
@@ -12,7 +13,21 @@ def allocation(mem_bank):
         new_array = realloc(mem_bank, max_element, max_index)
         new_hash = generate_hash(new_array)
         realloc_counter = realloc_counter + 1
-    return realloc_counter
+    # return realloc_counter this was the first part
+    return loop_size(new_hash, mem_bank)
+
+
+def loop_size(repeated_hash, mem_bank):
+    loop_counter = 0
+    new_hash = -1
+    while new_hash != repeated_hash:
+        to_alloc = find_max(mem_bank)
+        max_index = to_alloc[0]
+        max_element = to_alloc[1]
+        new_array = realloc(mem_bank, max_element, max_index)
+        new_hash = generate_hash(new_array)
+        loop_counter = loop_counter + 1
+    return loop_counter
 
 
 def generate_hash(array):
