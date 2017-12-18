@@ -48,18 +48,22 @@ def max_register(data):
 
     for register in registers:
         register_values[register] = 0
-
+    maximum = float('-Inf')
     for instruction in instructions:
         operation_register = instruction.operation_register
         amount = instruction.operation_amount
         register_value = register_values[operation_register]
         if condition_holds(instruction, register_values):
             if instruction.operation == 'dec':
-                register_values[operation_register] = register_value - amount
+                new_value = register_value - amount
             else:
-                register_values[operation_register] = register_value + amount
+                new_value =  register_value + amount
+            register_values[operation_register] = new_value
+            if new_value > maximum:
+                maximum = new_value
 
-    return max(register_values.values())
+    return maximum
+    #return max(register_values.values())
 
 
 def condition_holds(instruction, registers):
