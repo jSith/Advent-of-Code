@@ -36,11 +36,7 @@ def group_size(data):
     zero_group = []
 
     for vertex in graph.keys():
-        for neighbor in graph[vertex]:
-            if neighbor in zero_group and vertex not in zero_group:
-                zero_group.append(vertex)
-                continue
-        if vertex not in zero_group and breadth_first_search(graph, vertex, 0):
+        if breadth_first_search(graph, vertex, 0):
             zero_group.append(vertex)
     return len(zero_group)
 
