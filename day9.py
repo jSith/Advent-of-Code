@@ -5,15 +5,18 @@ def remove_garbage(stream):
     stream = re.sub('!.', '', stream)
     delete = False
     new_stream = []
+    garbage_count = 0
     for index in range(0, len(stream)):
         char = stream[index]
+        if delete and char != '>':
+            garbage_count = garbage_count + 1
         if not delete and char != '<':
             new_stream.append(char)
         if char == '<':
             delete = True
         elif char == '>':
             delete = False
-
+    print(garbage_count)
     return new_stream
 
 def group_score(data):
